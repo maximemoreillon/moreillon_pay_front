@@ -2,11 +2,11 @@
   <div id="app">
 
     <AppTemplate
-      applicationName="MoreillonPay">
+      applicationName="Cashless Payment System">
       <template v-slot:navigation>
 
         <router-link to="/">Users</router-link>
-        <router-link to="/log">Logs</router-link>
+        <router-link to="/transactions">Transactions</router-link>
         <router-link to="/login">Login</router-link>
         <template v-if="user_is_admin">
           <router-link to="/admin">Admin</router-link>

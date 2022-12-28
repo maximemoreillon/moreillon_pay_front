@@ -59,9 +59,9 @@ export default {
   },
   methods: {
     create_user(){
-      if(this.password !== this.password_confirm) return alert('password no match!')
+      if(this.password !== this.password_confirm) return alert('password not matching')
 
-      this.axios.post(`${process.env.VUE_APP_MOREILLONPAY_API_URL}/create_user`, {
+      this.axios.post(`/users`, {
         username: this.username,
         password: this.password,
         card_uuid: this.card_uuid,
@@ -81,7 +81,7 @@ export default {
       })
     },
     get_device_jwt(){
-      this.axios.get(`${process.env.VUE_APP_MOREILLONPAY_API_URL}/device_jwt`)
+      this.axios.get(`auth/device_jwt`)
       .then( (response) => {
         this.jwt = response.data
       })
