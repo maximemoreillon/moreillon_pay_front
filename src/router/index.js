@@ -11,12 +11,12 @@ Vue.use(VueRouter)
     component: Users
   },
   {
-    path: '/log',
-    name: 'Log',
-    component: () => import('../views/Log.vue')
+    path: '/transactions',
+    name: 'Transactions',
+    component: () => import('../views/Transactions.vue')
   },
   {
-    path: '/user',
+    path: '/users/:user_id',
     name: 'User',
     component: () => import('../views/User.vue')
   },

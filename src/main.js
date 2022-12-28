@@ -12,6 +12,7 @@ import 'vue-datetime/dist/vue-datetime.css'
 
 Vue.component('datetime', Datetime);
 
+axios.defaults.baseURL = process.env.VUE_APP_MOREILLONPAY_API_URL
 const socket = io(`${process.env.VUE_APP_MOREILLONPAY_API_URL}`);
 
 Vue.use(VueSocketIOExt, socket);
@@ -28,7 +29,7 @@ router.beforeEach((to, from, next) => {
   if(jwt) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
 
-    axios.post(`${process.env.VUE_APP_MOREILLONPAY_API_URL}/whoami`,{})
+    axios.get(`/users/self`)
     .then(response => {
       store.commit('set_user',response.data)
     })

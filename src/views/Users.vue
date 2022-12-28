@@ -16,7 +16,7 @@
           class="user"
           v-for="user in sorted_users"
           v-bind:key="user._id"
-          v-on:click="$router.push({name: 'User', query: {id: user._id}})">
+          v-on:click="$router.push({name: 'User', params: {user_id: user._id}})">
 
           <td class="display_name">{{user.display_name}}</td>
           <td class="balance">{{user.balance}}</td>
@@ -35,8 +35,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
 import {authentication} from '@/mixins/authentication.js'
 
 export default {
@@ -61,7 +59,7 @@ export default {
   },
   computed: {
     sorted_users(){
-      return this.$store.state.users.slice().sort((a, b) => {return b.balance - a.balance});
+      return this.$store.state.users.slice().sort((a, b) => b.balance - a.balance);
     }
   }
 }

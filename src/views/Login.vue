@@ -51,17 +51,18 @@ export default {
   },
   methods: {
     login(){
-      this.axios.post(`${process.env.VUE_APP_MOREILLONPAY_API_URL}/login`, {
+      this.axios.post(`/auth/login`, {
         username: this.username,
         password: this.password,
       })
-      .then(response => {
-        this.$cookies.set("moreillonpay_jwt", response.data.jwt, '14d', null, null)
-        this.$store.commit('set_user',response.data.user)
+      .then( ({data}) => {
+        this.$cookies.set("moreillonpay_jwt", data.jwt, '14d', null, null)
+        this.$store.commit('set_user', data.user)
       })
       .catch(error => {
-        if(error.response) console.log(error.response.data)
-        else console.log(error)
+        alert('Login failed')
+        if(error.response) console.error(error.response.data)
+        else console.error(error)
       })
     },
     logout(){
@@ -75,12 +76,12 @@ export default {
 
 <style scoped>
 form {
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
 }
 
-form > * {
-  margin: 0.5em 0;
-}
 form > div {
   display: flex;
 }
