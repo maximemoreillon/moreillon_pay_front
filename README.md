@@ -4,6 +4,8 @@ This is the GUI for the IoT cashless payment system.
 
 Please find the source code for the back-end of this project [here](https://github.com/maximemoreillon/moreillon_pay) and the IoT reader firmware [here](https://github.com/maximemoreillon/moreillon_pay_reader).
 
+For more information about this project, please see this [article](https://articles.maximemoreillon.com/articles/133).
+
 ## Project setup
 
 ```
